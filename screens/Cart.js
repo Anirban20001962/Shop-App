@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Color from '../constants/colors';
 import DefaultText from '../component/DefaultText';
 import CartItem from '../component/CartItem';
-import { addOrders } from '../Redux/Actions/products';
+import { productActions } from '../Redux/product';
 
 const Cart = (props) => {
 	const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Cart = (props) => {
 			Alert.alert('Empty Cart', 'Order Cannot be placed! Cart is empty');
 			return;
 		}
-		dispatch(addOrders(cart, dateString, totalPrice));
+		dispatch(productActions.addOrders(cart, dateString, totalPrice));
 		navigation.navigate('Orders');
 	}, [navigation, cart, totalPrice]);
 	return (

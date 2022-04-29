@@ -3,7 +3,7 @@ import { StyleSheet, View, Button, Image } from 'react-native';
 import Color from '../constants/colors';
 import DefaultText from '../component/DefaultText';
 import { useDispatch } from 'react-redux';
-import { addCartHandler } from '../Redux/Actions/products';
+import { productActions } from '../Redux/product';
 
 const ProductItem = (props) => {
 	const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const ProductItem = (props) => {
 					title="TO CART"
 					color={Color.primary}
 					onPress={() => {
-						dispatch(addCartHandler(props.item));
+						dispatch(productActions.addCartHandler(props.item));
 						props.navigation.navigate('Cart');
 					}}
 				/>

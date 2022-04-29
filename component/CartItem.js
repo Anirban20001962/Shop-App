@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import DefaultText from './DefaultText';
 import Color from '../constants/colors';
 import { useDispatch } from 'react-redux';
-import { removeCartHandler } from '../Redux/Actions/products';
+import { productActions } from '../Redux/product';
 
 const CartItem = (props) => {
 	const dispatch = useDispatch();
@@ -25,7 +25,12 @@ const CartItem = (props) => {
 				</DefaultText>
 				<TouchableOpacity
 					onPress={() => {
-						dispatch(removeCartHandler(item.id, item.noOfItems));
+						dispatch(
+							productActions.removeCartHandler(
+								item.id,
+								item.noOfItems
+							)
+						);
 					}}
 					style={{ paddingLeft: 8 }}
 				>

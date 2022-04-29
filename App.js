@@ -2,12 +2,20 @@ import React from 'react';
 import Navigation from './Navigation/Navigation';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import { createStore, combineReducers } from 'redux';
-import productReducer from './Redux/Reducers/product';
+import { combineReducers } from 'redux';
+import { productReducer } from './Redux/product';
 import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 
 const reducer = combineReducers({ product: productReducer });
-const store = createStore(reducer);
+const store = configureStore({
+	reducer: reducer,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			immutableCheck: false,
+			serializableCheck: false,
+		}),
+});
 
 export default function App() {
 	let [fontsLoad] = useFonts({
